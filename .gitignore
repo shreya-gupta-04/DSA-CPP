@@ -1,0 +1,10 @@
+# Ignore compiled C++ files
+*.o
+*.out
+# Ignore input and output files
+input.txt
+output.txt
+# Ignore build directory
+/build/
+# Ignore temporary files
+*.log
