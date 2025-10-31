@@ -19,12 +19,19 @@ child node>parent node
 
 INSERTION:
 
+For 1 based indexing:
 Node-> i;
 lc-> 2*i;
 rc-> 2*i+1;
 p-> i/2;
 
-Insertion Algorithm
+For 0 based indexing:
+Node-> i;
+lc-> 2*i+1;
+rc-> 2*i+2;
+p-> i/2;
+
+Insertion Algorithm:
 
 Insert the element at the end (bottom-most, leftmost position).
 Heapify Up → Compare with the parent and swap if the heap property is violated.
@@ -33,5 +40,25 @@ Continue until the correct position is found.
 TC:
 O(log n) — because height of a heap is log n.
 
-Deletion:
+Deletion Algorithm:
+
+Swap the root element with the last element -> O(1)
+Then remove last element -> O(1)
+Then apply heap property -> O(log n)
+
+TC:
+O(log n)
+
+Heapify Algorithm:
+
+convert arr into heap
+CBT: (n/2+1) to n all need not be processed as they all are leaf nodes and are heap already as there is nothing to compare it with
+all nodes from 1 to n/2 need to be processed
+heapify(arr,n,i) loop -> O(n)
+whole heapify function -> O(arr,n,i)
+
+Time Complexity:
+O(n)+O(log n)
+
+
 
