@@ -1,0 +1,47 @@
+1.3 List
+Description
+
+list is a doubly linked list — allows efficient insertion/deletion anywhere but no random access.
+
+Header:
+
+#include <list>
+
+Functions
+Function	                    Description	                        Time
+push_back(x), push_front(x)	    Add element	                        O(1)
+pop_back(), pop_front()	        Remove element	                    O(1)
+insert(pos, x)	                Insert before pos	                O(1)
+erase(pos)	                    Erase element	                    O(1)
+remove(x)	                    Remove all elements equal to x	    O(n)
+sort()	                        Sorts list	                        O(n log n)
+reverse()	                    Reverses list	                    O(n)
+unique()	                    Removes consecutive duplicates	    O(n)
+Example
+#include <iostream>
+#include <list>
+using namespace std;
+
+void example_list() {
+    list<int> l = {1, 2, 3};
+    l.push_front(0);
+    l.push_back(4);
+    l.remove(2);
+
+    cout << "List: ";
+    for (int x : l) cout << x << " ";
+    cout << endl;
+
+    l.reverse();
+    cout << "Reversed: ";
+    for (int x : l) cout << x << " ";
+    cout << endl;
+}
+
+Performance
+
+Random access: ❌ (O(n))
+
+Insert/Delete: O(1)
+
+Traversal: O(n)

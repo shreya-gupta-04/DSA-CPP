@@ -1,0 +1,32 @@
+4. String Streams
+
+For parsing strings or building strings: istringstream, ostringstream (in <sstream>). 
+Topcoder
+
+Example:
+
+#include <iostream>
+#include <sstream>
+#include <vector>
+#include <string>
+using namespace std;
+
+void example_string_streams() {
+    string s = "10 20 30 40";
+    istringstream iss(s);
+    vector<int> v;
+    int x;
+    while (iss >> x) {
+        v.push_back(x);
+    }
+
+    cout << "Parsed numbers: ";
+    for (int y : v) cout << y << " ";
+    cout << endl;
+
+    ostringstream oss;
+    oss << "Numbers:";
+    for (int y : v) oss << " " << y;
+    string result = oss.str();
+    cout << result << endl;
+}

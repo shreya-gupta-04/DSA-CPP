@@ -1,0 +1,27 @@
+2. Iterators
+
+Iterators provide a uniform way of accessing elements in containers (like pointers). 
+Topcoder
+
+Every container provides begin(), end(), sometimes rbegin(), rend().
+
+Example of using iterator:
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void example_iterator() {
+    vector<int> v = {1, 2, 3, 4, 5};
+    for (vector<int>::iterator it = v.begin(); it != v.end(); ++it) {
+        cout << *it << " ";
+    }
+    cout << endl;
+
+    // Using const_iterator
+    const vector<int> &cv = v;
+    for (vector<int>::const_iterator it = cv.begin(); it != cv.end(); ++it) {
+        cout << *it << " ";
+    }
+    cout << endl;
+}

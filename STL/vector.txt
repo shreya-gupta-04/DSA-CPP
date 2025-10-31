@@ -1,0 +1,128 @@
+Containers:
+
+STL containers are data structures that store collections of objects. They provide a generic interface so you don’t have to implement everything from scratch.
+
+It includes:
+list
+stack
+pair
+vector
+queue
+set
+map
+
+1.1 Vector
+
+A vector is a dynamic array in C++ STL that can change size automatically when elements are inserted or removed.
+It provides random access, contiguous storage, and amortized constant-time insertion at the end.
+
+Header:
+
+#include <vector>
+
+Key Characteristics
+
+Elements are stored contiguously in memory (like arrays).
+
+Supports random access in O(1) time.
+
+Dynamic resizing: capacity grows automatically (usually doubles).
+
+Can hold any data type — even user-defined structs/classes.
+
+Supports iterators, reverse iterators, and range-based loops.
+
+Commonly Used Member Functions
+Function	Description	Time Complexity
+push_back(x)	Adds element x at the end	Amortized O(1)
+pop_back()	Removes last element	O(1)
+size()	Returns number of elements	O(1)
+capacity()	Returns allocated memory capacity	O(1)
+resize(n)	Changes size to n	O(n) (if grows/shrinks)
+clear()	Removes all elements	O(n)
+empty()	Checks if vector is empty	O(1)
+front()	Access first element	O(1)
+back()	Access last element	O(1)
+at(i)	Access ith element with bounds checking	O(1)
+operator[i]	Access ith element (no check)	O(1)
+insert(pos, x)	Inserts element at pos	O(n)
+erase(pos)	Removes element at pos	O(n)
+erase(range)	Removes elements in [start, end)	O(n)
+swap(v2)	Swaps contents with another vector	O(1)
+assign(n, val)	Replaces content with n copies of val	O(n)
+begin() / end()	Return iterators	O(1)
+rbegin() / rend()	Reverse iterators	O(1)
+shrink_to_fit()	Reduces capacity to match size	O(n)
+Example Code
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+void example_vector_advanced() {
+    vector<int> v = {1, 2, 3};
+
+    // Insert and push_back
+    v.push_back(4);           // {1, 2, 3, 4}
+    v.insert(v.begin() + 1, 5); // {1, 5, 2, 3, 4}
+
+    // Access elements
+    cout << "Front: " << v.front() << ", Back: " << v.back() << endl;
+    cout << "At(2): " << v.at(2) << ", [3]: " << v[3] << endl;
+
+    // Iterate using iterator
+    cout << "Vector elements: ";
+    for (auto it = v.begin(); it != v.end(); ++it)
+        cout << *it << " ";
+    cout << endl;
+
+    // Reverse iteration
+    cout << "Reverse order: ";
+    for (auto rit = v.rbegin(); rit != v.rend(); ++rit)
+        cout << *rit << " ";
+    cout << endl;
+
+    // Size, capacity
+    cout << "Size = " << v.size() << ", Capacity = " << v.capacity() << endl;
+
+    // Erase, resize
+    v.erase(v.begin() + 1); // remove 2nd element
+    v.resize(3); // resize vector
+    cout << "After erase and resize: ";
+    for (int x : v) cout << x << " ";
+    cout << endl;
+
+    // Sort
+    sort(v.begin(), v.end());
+    cout << "Sorted: ";
+    for (int x : v) cout << x << " ";
+    cout << endl;
+
+    // Swap and assign
+    vector<int> v2 = {100, 200, 300};
+    v.swap(v2);
+    cout << "After swap, v = ";
+    for (int x : v) cout << x << " ";
+    cout << endl;
+
+    v.assign(5, 10);
+    cout << "After assign(5,10): ";
+    for (int x : v) cout << x << " ";
+    cout << endl;
+
+    // Shrink to fit
+    v.shrink_to_fit();
+    cout << "Final size = " << v.size() << ", capacity = " << v.capacity() << endl;
+}
+
+Performance Notes
+
+Access: O(1)
+
+Search (unsorted): O(n)
+
+Search (sorted with binary_search): O(log n)
+
+Insert/Erase at end: O(1) amortized
+
+Insert/Erase at beginning/middle: O(n) (due to shifting elements)

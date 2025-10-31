@@ -1,0 +1,122 @@
+2.3 Map
+Description
+
+Stores key–value pairs with unique keys, sorted by key.
+Implemented as Red-Black Tree.
+
+Header:
+
+#include <map>
+
+Functions
+Function	        Description	                                Time
+insert({k, v})	    Insert key-value pair	                O(log n)
+erase(k)	        Remove by key	                        O(log n)
+find(k)	            Search key	                            O(log n)
+operator[]	        Access/insert value	                    O(log n)
+count(k)	        Check existence                         O(log n)
+begin(), end()	    Iterate	                                O(1)
+
+Example
+#include <iostream>
+#include <map>
+using namespace std;
+
+void example_map() {
+    map<string, int> m;
+    m["apple"] = 3;
+    m["banana"] = 2;
+
+    for (auto [key, val] : m)
+        cout << key << " => " << val << endl;
+
+    m.erase("banana");
+    cout << "After erase:\n";
+    for (auto [key, val] : m)
+        cout << key << " => " << val << endl;
+}
+
+2.4 Multimap
+
+Like map, but allows duplicate keys.
+
+🗺️ UNORDERED_MAP
+Overview
+
+An unordered_map is a hash table-based associative container that stores key-value pairs with unique keys and allows average O(1) lookups.
+Unlike map, it does not maintain sorted order of keys.
+
+Header:
+#include <unordered_map>
+
+Key Characteristics
+
+Stores data as key–value pairs.
+
+Keys are unique; values can repeat.
+
+No ordering — elements stored in arbitrary order.
+
+Average O(1) insertion and access.
+
+Ideal for frequency counting, hash-based lookups, etc.
+
+Common Functions
+Function	        Description	                            Time Complexity
+insert({key, val})	Inserts key–value pair	                     O(1) avg
+erase(key)	        Removes                                      O(1) avg
+find(key)	        Finds key; returns                           O(1) avg
+count(key)	        Returns 1 if key                             O(1)
+size()	            Number of elements	                         O(1)
+clear()	            Removes all pairs	                         O(n)
+operator[key]	    Access/insert value	                         O(1) avg
+begin(), end()	    Iterators	                                 O(1)
+empty()	            Checks if empty	                             O(1)
+
+Example
+#include <iostream>
+#include <unordered_map>
+using namespace std;
+
+void example_unordered_map() {
+    unordered_map<string, int> mp;
+
+    // Insert elements
+    mp["apple"] = 5;
+    mp["banana"] = 10;
+    mp.insert({"orange", 7});
+
+    // Access
+    cout << "Apple count: " << mp["apple"] << endl;
+
+    // Find
+    if (mp.find("banana") != mp.end())
+        cout << "Banana found\n";
+
+    // Iterate
+    cout << "All elements:\n";
+    for (auto &p : mp)
+        cout << p.first << " -> " << p.second << endl;
+
+    // Erase
+    mp.erase("orange");
+
+    cout << "Size after erase: " << mp.size() << endl;
+}
+
+Time Complexity
+Operation	Average Case	Worst Case
+Insert	O(1)	O(n)
+Erase	O(1)	O(n)
+Access (operator[])	O(1)	O(n)
+Find	O(1)	O(n)
+Traverse	O(n)	O(n)
+Use Cases
+
+Frequency maps
+
+Counting words
+
+Hash-based caching
+
+Graph adjacency using unordered_map<int, vector<int>>

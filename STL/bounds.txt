@@ -1,0 +1,45 @@
+6. Binary Search Functions – lower_bound() & upper_bound()
+
+These are part of <algorithm> and work on sorted containers (like vector, set, etc.).
+
+Definitions
+
+lower_bound(begin, end, value)
+→ Returns an iterator pointing to the first element ≥ value.
+
+upper_bound(begin, end, value)
+→ Returns an iterator pointing to the first element > value.
+
+If the value is not found, both return end().
+
+⚙️ Time Complexity: O(log n) (for random access containers).
+
+Example – Using vector
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+void example_bounds_vector() {
+    vector<int> v = {1, 2, 4, 4, 5, 7, 9};
+    cout << "Vector elements: ";
+    for (int x : v) cout << x << " ";
+    cout << endl;
+
+    int val = 4;
+    auto lb = lower_bound(v.begin(), v.end(), val);
+    auto ub = upper_bound(v.begin(), v.end(), val);
+
+    cout << "lower_bound(" << val << ") index: " << (lb - v.begin()) << endl;
+    cout << "upper_bound(" << val << ") index: " << (ub - v.begin()) << endl;
+
+    cout << "Count of " << val << " = " << (ub - lb) << endl;
+}
+
+
+Output:
+
+Vector elements: 1 2 4 4 5 7 9
+lower_bound(4) index: 2
+upper_bound(4) index: 4
+Count of 4 = 2

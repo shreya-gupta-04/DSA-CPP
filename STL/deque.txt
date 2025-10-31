@@ -1,0 +1,56 @@
+1.2 Deque (Double-Ended Queue)
+Description
+
+A deque (Double-Ended Queue) allows insertion and deletion from both front and back in constant time.
+Unlike vector, it may not store elements contiguously.
+
+Header:
+
+#include <deque>
+
+Common Functions
+Function	            Description	            Time Complexity
+push_back(x)	        Insert at end	        O(1) amortized
+push_front(x)	        Insert at front	        O(1) amortized
+pop_back()	            Remove last element	    O(1)
+pop_front()	            Remove first element	O(1)
+front()	                Access first element	O(1)
+back()	                Access last element	    O(1)
+insert(pos, x)	        Insert at position	    O(n)
+erase(pos)	            Remove from position	O(n)
+clear()	                Remove all elements	    O(n)
+at(i) / [i]	            Access ith element	    O(1)
+size() / empty()	    Info functions	        O(1)
+
+
+Example
+#include <iostream>
+#include <deque>
+using namespace std;
+
+void example_deque() {
+    deque<int> dq = {1, 2, 3};
+    dq.push_front(0);
+    dq.push_back(4);
+
+    cout << "Deque: ";
+    for (int x : dq) cout << x << " ";
+    cout << "\nFront: " << dq.front() << ", Back: " << dq.back() << endl;
+
+    dq.pop_front();
+    dq.pop_back();
+
+    cout << "After pops: ";
+    for (int x : dq) cout << x << " ";
+    cout << endl;
+}
+
+Performance Notes
+
+Access: O(1)
+
+Insert/Delete front or back: O(1) amortized
+
+Insert/Delete middle: O(n)
+
+Ideal when both ends need frequent operations.

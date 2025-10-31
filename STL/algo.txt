@@ -1,0 +1,28 @@
+5. ALGORITHMS
+Common Functions
+Function	                    Description	                                Time
+sort(begin,end)	                Sort ascending	                            O(n log n)
+reverse(begin,end)	            Reverse range	                            O(n)
+count(begin,end,x)	            Count occurrences	                        O(n)
+find(begin,end,x)	            Find value	                                O(n)
+min_element, max_element	    Find min/max	                            O(n)
+binary_search(begin,end,x)	    Check existence in sorted container	        O(log n)
+next_permutation	            Next lexicographic permutation	            O(n)
+
+Example
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+void example_algorithms() {
+    vector<int> v = {3,1,4,2};
+    sort(v.begin(), v.end());
+    reverse(v.begin(), v.end());
+
+    cout << "Sorted Desc: ";
+    for (int x : v) cout << x << " ";
+    cout << endl;
+
+    cout << "Max element: " << *max_element(v.begin(), v.end()) << endl;
+}

@@ -1,0 +1,50 @@
+A pair is a simple container defined in <utility> that stores two heterogeneous objects together as a single unit.
+Commonly used in maps, priority queues, and custom return values.
+
+Header:
+#include <utility>
+
+Key Points
+
+Can store two values (possibly of different types).
+
+Accessed using .first and .second.
+
+Supports comparison operators (==, <, >, etc.) lexicographically.
+
+Commonly used with containers like map, set, and priority_queue.
+
+Common Functions:
+Function	                        Description
+make_pair(a, b)	                    Creates a pair of (a, b)
+.first	                            Access first element
+.second	                            Access second element
+Comparison (<, >, ==)	            Compares lexicographically
+tie(a, b)	                        Unpack pair elements into variables
+
+Example
+#include <iostream>
+#include <utility>
+#include <tuple>
+using namespace std;
+
+void example_pair() {
+    pair<int, string> p1 = {1, "Shreya"};
+    pair<int, int> p2 = make_pair(10, 20);
+
+    cout << p1.first << " " << p1.second << endl;
+    cout << p2.first << " " << p2.second << endl;
+
+    // Nested pair
+    pair<int, pair<int, int>> nested = {1, {2, 3}};
+    cout << nested.first << " " << nested.second.first << " " << nested.second.second << endl;
+
+    // Unpack using tie
+    int a, b;
+    tie(a, b) = p2;
+    cout << "Unpacked: " << a << " " << b << endl;
+}
+
+Time Complexity
+
+All operations like creation, access, and comparison → O(1).
