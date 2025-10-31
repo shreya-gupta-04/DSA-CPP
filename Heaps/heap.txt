@@ -1,0 +1,37 @@
+HEAPS:
+
+heap hamara ek DS hai w/c is a complete binary tree and comes with heap order property
+
+BT:
+Each node can have at most 2 children (left and right).
+
+CBT:
+All levels are completely filled except possibly the last.
+In the last level, nodes are filled from left to right (lean towards left).
+
+
+HEAP ORDER PROPERTY:
+MAX heap:
+child node<parent node
+
+MIN heap:
+child node>parent node
+
+INSERTION:
+
+Node-> i;
+lc-> 2*i;
+rc-> 2*i+1;
+p-> i/2;
+
+Insertion Algorithm
+
+Insert the element at the end (bottom-most, leftmost position).
+Heapify Up → Compare with the parent and swap if the heap property is violated.
+Continue until the correct position is found.
+
+TC:
+O(log n) — because height of a heap is log n.
+
+Deletion:
+
